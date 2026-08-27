@@ -2,6 +2,7 @@
 
 import Box from "@/src/Components/About/BoxesAbout";
 import { motion, AnimatePresence } from "framer-motion";
+import { aboutTimeline } from "@/src/data/timeline";
 
 export default function Page() {
     return (
@@ -70,50 +71,30 @@ export default function Page() {
                         <p className="font-serif pb-10 text-orange-400 uppercase tracking-wider">02 — Chronology</p>
                         <h1 className="font-serif pb-30 text-4xl sm:text-6xl md:text-8xl italic">The Path</h1>
                     </motion.div>
-                    <div className="flex flex-col md:flex-row mb-5 sm:mb-50 gap-12 items-center">
-                        <motion.div
-                            initial={{ opacity: 0, x: -40 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: false }}
-                            transition={{ duration: 0.8, delay: 0.1 }}
-                            className="flex-1 "
-                        >
-                            <h1 className="text-7xl md:text-[12rem] italic font-serif">2022</h1>
-                            <h3 className="text-4xl md:text-5xl font-serif italic opacity-50">The Spark</h3>
-                        </motion.div>
+                    {aboutTimeline.map((item, idx) => {
+                        const isLeft = idx % 2 === 0;
+                        return (
+                            <div key={item.year + idx} className={`flex flex-col md:flex-row ${!isLeft ? "md:flex-row-reverse" : ""} mb-5 sm:mb-50 gap-12 items-center`}>
+                                <motion.div
+                                    initial={{ opacity: 0, x: isLeft ? 40 : -40 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: false }}
+                                    transition={{ duration: 0.8, delay: 0.1 }}
+                                    className="flex-1"
+                                >
+                                    <h1 className="text-7xl md:text-[12rem] italic font-serif">{item.year}</h1>
+                                    <h3 className="text-4xl md:text-5xl font-serif italic opacity-50">{item.event}</h3>
+                                </motion.div>
 
-                        <div className="w-px h-45 bg-linear-to-b from-orange-400 to-transparent hidden md:block" />
-                        <div className="flex-1" />
-                    </div>
-                    <div className="flex flex-col md:flex-row mb-5 sm:mb-50 gap-12 items-center">
-                        <div className="flex-1" />
-                        <div className="w-px h-45 bg-linear-to-b from-orange-400 to-transparent hidden md:block" />
-                        <motion.div
-                            initial={{ opacity: 0, x: 40 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: false }}
-                            transition={{ duration: 0.8, delay: 0.1 }}
-                            className="flex-1"
-                        >
-                            <h1 className="text-7xl md:text-[12rem] italic font-serif">2024</h1>
-                            <h3 className="text-4xl md:text-5xl font-serif italic opacity-50 pb-20">Rose-Hulman</h3>
-                        </motion.div>
-                    </div>
-                    <div className="flex flex-col md:flex-row mb-5 sm:mb-65 gap-12 items-center">
-                        <motion.div
-                            initial={{ opacity: 0, x: -40 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: false }}
-                            transition={{ duration: 0.8, delay: 0.1 }}
-                            className="flex-1 "
-                        >
-                            <h1 className="text-7xl md:text-[12rem] italic font-serif">2025</h1>
-                            <h3 className="text-4xl md:text-5xl font-serif italic opacity-50">Joined Purrquinox</h3>
-                        </motion.div>
-
-                        <div className="w-px h-45 bg-linear-to-b from-orange-400 to-transparent hidden md:block" />
-                        <div className="flex-1" />
-                    </div>
+                                    {idx !== aboutTimeline.length - 1 ? (
+                                        <div className="w-px h-45 bg-linear-to-b from-orange-400 to-transparent" />
+                                    ) : (
+                                        <div className="hidden md:block w-px h-45 bg-linear-to-b from-orange-400 to-transparent" />
+                                    )}
+                                <div className="flex-1" />
+                            </div>
+                        );
+                    })}
                 </div>
             </section>
             <section className="dark:bg-black py-10 px-6">
