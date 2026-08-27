@@ -39,5 +39,13 @@ export const projects: Project[] = [
         options: ["Software Developer Intern"],
         num: 4,
         url: "https://www.tsenta.com/",
+    },
+    {
+        name: "Applied Signal Technology, Raytheon",
+        desc: "Signal processing to find needle in a haystack information",
+        date: 2026,
+        options: ["Software Engineering Intern"],
+        num: 5,
+        url: "https://www.rtx.com/collinsaerospace/what-we-do/industries/military-and-defense/communications/applied-signal-technology",
     }
 ];

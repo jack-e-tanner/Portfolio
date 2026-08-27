@@ -122,7 +122,7 @@ export default function Page() {
                         <div className="space-y-8 pt-2 max-w-105rem">
                             <p className="font-sans text-2xl">
                                 Hi! I&apos;m <span className="font-serif font-bold">Jack Tanner</span>, a passionate American, self-taught coder. I&apos;m a daily learner, always aiming for personal growth.
-                                Lead Architect Designer of <span className="font-serif font-bold text-orange-400"> <Link target="_blank" href="https://purrquinox.com/">Purrquinox</Link></span>.
+                                I worked at Raytheon in the summer for a software engineering internship in SLC, UT and it was awesome!
                             </p>
 
                             <p className="font-sans text-2xl">
